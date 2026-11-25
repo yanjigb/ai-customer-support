@@ -64,3 +64,8 @@ def check_reply(ctx: RunContext[None], output: AgentReply) -> AgentReply:
 def write_reply(thread: str, section: str) -> AgentReply:
     prompt = f"Section picked by the classifier: {section}\n\n{thread}"
     return support_agent.run_sync(prompt).output
+
+
+async def write_reply_async(thread: str, section: str) -> AgentReply:
+    prompt = f"Section picked by the classifier: {section}\n\n{thread}"
+    return (await support_agent.run(prompt)).output

@@ -33,3 +33,7 @@ classifier = Agent(settings.classifier_model, output_type=Classification, instru
 
 def classify(thread: str) -> Classification:
     return classifier.run_sync(thread).output
+
+
+async def classify_async(thread: str) -> Classification:
+    return (await classifier.run(thread)).output
